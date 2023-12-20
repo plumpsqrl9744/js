@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Document</title>
-  </head>
+<head>
+  <style>
+    .red{
+      color : red;
+    }
+    .blue{
+      color : blue;
+    }
+  </style>
+</head>
+<html>
   <body>
-    <div id="DOM_example">DOM test</div>
+    <ul>
+      <li class="red">pizza</li>
+      <li class="red">noddle</li>
+      <li class="red">rice</li>
+    </ul>
+    <script>
+      const $elems=document.getElementsByClassName('red');
+      const $ele = [...$elems]
+      console.log($elems)
+      // for(let i = 0;i<$elems.length; i++){
+      //   $elems[i].className = 'blue';
+      // }
+      // 잘못된 코드, 반복문을 순회하면서 NodeList는 경우에 따라 live 객체로 동작하여
+      // 첫 번째 반복문 이후 $elems의 첫 번째 node가 제거되어 길이가 2인 배열로 변환된다.
+
+      for(let i = 0;i<$ele.length; i++){
+        $ele[i].className = 'blue';
+      }
+      // 이러한 상황을 방지하기 위해 스프레드 연산자를 이용해 다시 non-live 객체로 변환해 준 뒤
+      // 반복문을 순회하면 이런 상황을 방지할 수 있다.
+    </script>
   </body>
 </html>
